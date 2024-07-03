@@ -1,0 +1,32 @@
+<app-header [showMenu]="true"  title="Especialistas"></app-header>
+
+
+    <ion-content>
+      <ion-list>
+        <ion-item button detail routerLink="horario"  lines="none">
+          <ion-avatar slot="start">
+            <img src="/assets/icon/doctor (1).png">
+          </ion-avatar>
+          <ion-label>
+            <h2>Dr. Josue Aguirre</h2>
+            <p>Especialista en Odontologia</p>
+          </ion-label>
+          <ion-icon name="arrow-forward-circle" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item button detail routerLink="especialistas" lines="none">
+          <ion-avatar slot="start">
+            <img src="/assets/icon/doctor (1).png">
+          </ion-avatar>
+          <ion-label>
+            <h2>Dra. Roxana De la Cruz</h2>
+            <p>Especialista en Odontologia</p>
+          </ion-label>
+          <ion-icon name="arrow-forward-circle" slot="end"></ion-icon>
+        </ion-item>
+        <!-- Añade más ítems para otros doctores -->
+      </ion-list>
+    </ion-content>
+
+
+

@@ -1,0 +1,79 @@
+<app-header backButton="/auth" title="Registro"></app-header>
+<ion-content>
+ 
+<div class="d-flex-center">
+ 
+  <!--este es el formulario--> 
+    <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit">
+      
+      <app-logo></app-logo>
+    <!--name-->
+    <app-custom-input 
+    autocomplete="name" 
+    icon="person-outline"
+    [control]="form.controls.name"
+    type ="text"
+    label="Nombre"
+    ></app-custom-input><!--{{form.value.name}} -- se usa para probar si te reconoce el name--> 
+  
+
+    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+      <div *ngIf="form.controls.name.errors?.['required'] ">Este campo es requerido</div>
+      <div *ngIf="form.controls.name.errors?.['minlenght'] ">El nombre debe tener al menos 4 caracteres</div>
+    </div>
+
+     <!--correo-->
+    <app-custom-input 
+    autocomplete="email" 
+    icon="mail-outline"
+    [control]="form.controls.email"
+    type ="email"
+    label="Correo"
+    ></app-custom-input>
+
+    <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+      <div *ngIf="form.controls.email.errors?.['required'] ">El correo es requerido</div>
+      <div *ngIf="form.controls.email.errors?.['email'] ">Ingrese un correo</div>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input type="tel" formControlName="phone"></ion-input>
+    </ion-item>
+    
+    <ion-item >
+      <ion-label position="floating">DNI</ion-label>
+      <ion-input type="text" formControlName="dni"></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input type="text" formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Facultad</ion-label>
+      <ion-select formControlName="facultad">
+        <!-- Aquí puedes agregar las opciones de facultades -->
+        <ion-select-option *ngFor="let fac of facultad" [value]="fac">{{fac}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+     <!--contraseña-->
+    <app-custom-input 
+    [control]="form.controls.password"
+    icon="lock-closed-outline"
+    type="password"
+    label="Contraseña"
+    ></app-custom-input>
+    
+    <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+      <div *ngIf="form.controls.password.errors?.['required'] ">La contraseña es requerida</div>
+    </div>
+     <!-- Estos los botones--> 
+    <ion-button expand="block"  mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+        Registrar
+        <ion-icon slot="end" name="person-add-outline"></ion-icon>
+    </ion-button>
+
+    </form>
+</div>
+</ion-content>
